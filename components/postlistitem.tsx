@@ -39,8 +39,8 @@ const PostListItem = ({
     tags
 }: Props) => {
     return (
-        <article className="grid grid-cols-6 items-center w-full p-4 gap-4 border-b">
-            <div className="flex flex-col flex-1 col-span-5">
+        <article className="flex items-center w-full p-4 gap-4 border-b">
+            <div className="flex flex-col flex-1">
                 <header className="flex items-center gap-1">
                     <Link href={authorlink} className="flex items-center gap-2">
                         <Avatar className="hover:opacity-90 cursor-pointer border">
@@ -66,9 +66,9 @@ const PostListItem = ({
                     }
                 </div>
             </div>
-            <Link href={postlink} className="hidden sm:flex bg-slate-400 aspect-square">
+            {/* <Link href={postlink} className="hidden sm:flex bg-slate-400 aspect-square">
                 <img src="https://picsum.photos/200" alt="post thumbnail" className="object-cover w-full h-full" />
-            </Link>
+            </Link> */}
         </article>
     )
 }

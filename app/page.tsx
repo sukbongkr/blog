@@ -1,6 +1,8 @@
 import PostListItem from "@/components/postlistitem";
 import { getAllPosts } from "@/lib/db";
 
+export const dynamic = 'force-dynamic';
+
 async function getPosts() {
   const posts = await getAllPosts();
   
