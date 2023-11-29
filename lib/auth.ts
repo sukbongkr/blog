@@ -3,7 +3,7 @@ import { User, OAuthProvider, signInWithPopup, onAuthStateChanged, updateProfile
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-export function getUser() {
+export function useUser() {
 	const [user, setUser] = useState<User | null>()
 	const router = useRouter()
 

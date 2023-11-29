@@ -17,7 +17,7 @@ import dayjs from "dayjs"
 import relativeTime from "dayjs/plugin/relativeTime"
 import 'dayjs/locale/ko'
 import { Timestamp } from "firebase/firestore"
-import { getUser } from "@/lib/auth"
+import { useUser } from "@/lib/auth"
 
 import { XCircle } from "lucide-react"
 
@@ -40,7 +40,7 @@ type Props = {
 }
 
 export default function PostTitle({ id, title, author, authorName, authorAvatar, createdAt }: Props) {
-    const user = getUser();
+    const user = useUser();
     const router = useRouter();
 
     return (

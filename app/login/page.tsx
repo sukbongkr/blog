@@ -9,12 +9,12 @@ import {
     CardTitle,
 } from "@/components/ui/card"
 
-import { getUser, signInWithKaKao } from "@/lib/auth";
+import { useUser, signInWithKaKao } from "@/lib/auth";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 export default function LoginPage() {
-    const user = getUser();
+    const user = useUser();
     const router = useRouter();
 
     useEffect(() => {

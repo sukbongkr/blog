@@ -21,8 +21,8 @@ type Props = {
     createdAt: Timestamp
     author: string
     avatar: string
-    likes: number
-    comments: number
+    likes?: number
+    comments?: number
     tags: string[]
     postlink: string
     authorlink: string

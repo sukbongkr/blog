@@ -3,7 +3,7 @@ import PostTitle from "./postTitle";
 
 //export const revalidate = 60 * 60 * 24; // 24 hours
 
-export async function getPostData(postId: string) {
+async function getPostData(postId: string) {
     const post = await getPost(postId);
 
     return post;

@@ -12,7 +12,7 @@ import {
     FormMessage,
 } from "@/components/ui/form"
 import { Button } from "@/components/ui/button"
-import { getUser, updateUserProfile } from "@/lib/auth";
+import { useUser, updateUserProfile } from "@/lib/auth";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import * as z from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -30,7 +30,7 @@ const formSchema = z.object({
 })
 
 export default function Component() {
-    const user = getUser();
+    const user = useUser();
     const router = useRouter();
 
     const form = useForm<z.infer<typeof formSchema>>({

@@ -9,13 +9,14 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
 
-import { getUser } from "@/lib/auth"
+import { useUser } from "@/lib/auth"
 import { createAndUpdatePost, getPost } from "@/lib/db"
 import { useEffect, useState } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 
 import { v4 as uuid } from 'uuid';
 import { toast } from "@/components/ui/use-toast"
+import { serverTimestamp } from "firebase/firestore"
 
 const formSchema = z.object({
     title: z.string().min(2, {
@@ -29,7 +30,7 @@ const formSchema = z.object({
 
 export default function WritePage() {
     const router = useRouter()
-    const user = getUser()
+    const user = useUser()
     const searchParams = useSearchParams()
 
     const [loading, setLoading] = useState(false)
@@ -89,7 +90,7 @@ export default function WritePage() {
             title: title,
             content: content,
             description: description,
-            createdAt: new Date(),
+            createdAt: serverTimestamp(),
             tag: tag,
             author: user.uid,
             authorName: user.displayName,

@@ -1,7 +1,7 @@
 import PostListItem from "@/components/postlistitem";
 import { getAllPosts } from "@/lib/db";
 
-export async function getPostsData() {
+async function getPosts() {
   const posts = await getAllPosts();
   
   return {
@@ -10,13 +10,10 @@ export async function getPostsData() {
 }
 
 export default async function Home() {
-  const data = await getPostsData();
+  const data = await getPosts();
 
   return (
     <>
-      {/* landing page */}
-
-      {/* post list */}
       <section className="flex flex-col gap-8 w-full">
        
         {
@@ -28,9 +25,7 @@ export default async function Home() {
               avatar={post.authorAvatar}
               author={post.authorName}
               createdAt={post.createdAt}
-              likes={post.likes}
               tags={post.tag}
-              comments={post.comments}
               postlink={`/post/${post.id}`}
               authorlink={`/author/${post.author}`}
             />

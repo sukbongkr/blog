@@ -18,18 +18,18 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip"
-import { getUser, signOut } from '@/lib/auth';
+import { useUser, signOut } from '@/lib/auth';
 import { useRouter } from 'next/navigation';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 
 const Navbar = () => {
-  const user = getUser();
+  const user = useUser();
   const router = useRouter();
 
   return (
     <header className='z-10 fixed top-0 left-0 right-0 flex items-center justify-betweenbg-background border-b bg-background'>
       <div className='max-w-screen-lg mx-auto w-full flex items-center justify-between py-2 px-12'>
-        <Link href='/' className='text-xl font-semibold'>Sukbong'Labs</Link>
+        <Link href='/' className='text-xl font-semibold'>SukbongLabs</Link>
         <nav className='flex items-center gap-2'>
           {user ? <> <TooltipProvider>
             <Tooltip>
