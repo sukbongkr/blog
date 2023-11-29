@@ -1,5 +1,5 @@
 import { auth } from "./firebase";
-import { User, OAuthProvider, signInWithPopup, onAuthStateChanged, updateProfile } from "firebase/auth";
+import { User, OAuthProvider, signInWithPopup, onAuthStateChanged, updateProfile, getRedirectResult } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -33,7 +33,19 @@ export function useUser() {
 
 export function signInWithKaKao() {
 	const provider = new OAuthProvider("oidc.kakao")
-	return signInWithPopup(auth, provider);
+	signInWithPopup(auth, provider)
+		.then((result) => {
+			// User is signed in.
+			// IdP data available using getAdditionalUserInfo(result)
+
+			// Get the OAuth access token and ID Token
+			const credential = OAuthProvider.credentialFromResult(result);
+			const accessToken = credential?.accessToken;
+			const idToken = credential?.idToken;
+		})
+		.catch((error) => {
+			// Handle error.
+		});
 }
 
 export async function signOut() {
